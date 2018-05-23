@@ -1,7 +1,7 @@
 # stock-prices Makefile
 
 FC = gfortran
-OBJS = mod_io.o
+OBJS = mod_arrays.o mod_io.o
 
 all: stock_prices
 
@@ -16,6 +16,7 @@ stock_prices: stock_prices.f90 $(OBJS)
 	$(FC) $< $(OBJS) -o $@
 
 # modules
+mod_arrays.o: mod_arrays.f90
 mod_io.o: mod_io.f90
 
 .PHONY:

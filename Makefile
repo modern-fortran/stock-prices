@@ -4,7 +4,7 @@
 
 all: stock_prices
 
-stock_prices:
+stock_prices: src/stock_prices.f90
 	$(MAKE) --directory=src $@
 	cp src/$@ .
 
