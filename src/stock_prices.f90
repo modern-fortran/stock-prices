@@ -1,6 +1,6 @@
 program stock_prices
 
-  use mod_arrays, only: mean, reverse
+  use mod_arrays, only: mean, reverse, running_mean, std
   use mod_io, only: read_stock
 
   implicit none
@@ -13,7 +13,7 @@ program stock_prices
   symbols = ['AAPL', 'AMZN', 'CRAY', 'CSCO', 'HPQ ',&
              'IBM ', 'INTC', 'MSFT', 'NVDA', 'ORCL']
 
-  write(*,*) 'Symbol, Open, Close, Average, Max. growth [%]'
+  write(*,*) 'Symbol, Open, Close, Average, Standard dev., Max. growth [%]'
 
   do n = 1, size(symbols)
 
@@ -25,7 +25,7 @@ program stock_prices
 
     im = size(close)
 
-    write(*,*) symbols(n), open(1), close(im), mean(open),&
+    write(*,*) symbols(n), open(1), close(im), mean(open), std(open),&
                maxval((close - open) / open * 100)
 
   end do

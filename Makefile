@@ -4,10 +4,10 @@
 
 all: stock_prices
 
-stock_prices: src/stock_prices.f90
+stock_prices: src/*.f90
 	$(MAKE) --directory=src $@
 	cp src/$@ .
 
 clean:
-	$(MAKE) --directory=src $@
 	rm stock_prices
+	$(MAKE) --directory=src $@
