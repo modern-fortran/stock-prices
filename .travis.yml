@@ -1,0 +1,27 @@
+language: none
+fast_finish: true
+
+os:
+  - linux
+
+env: FC=gfortran
+
+dist: trusty
+group: edge
+
+notifications:
+  email: false
+
+git:
+  depth: 3
+
+addons:
+  apt:
+    sources: ['ubuntu-toolchain-r-test']
+    packages: ['gfortran']
+
+install:
+    - make
+
+script:
+    - ./stock_prices
