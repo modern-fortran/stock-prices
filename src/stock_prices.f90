@@ -13,7 +13,7 @@ program stock_prices
   symbols = ['AAPL', 'AMZN', 'CRAY', 'CSCO', 'HPQ ',&
              'IBM ', 'INTC', 'MSFT', 'NVDA', 'ORCL']
 
-  write(*,*) 'Symbol, Open, Close, Average, Standard dev., Max. growth [%]'
+  write(*,*) 'Symbol, Adj. close (2000), Adj. close (2018), Average, Standard dev., Max. growth [%]'
 
   do n = 1, size(symbols)
 
@@ -22,11 +22,12 @@ program stock_prices
 
     open = reverse(open)
     close = reverse(close)
+    adjclose = reverse(adjclose)
 
     im = size(close)
 
-    write(*,*) symbols(n), open(1), close(im), mean(open), std(open),&
-               maxval((close - open) / open * 100)
+    write(*,*) symbols(n), adjclose(1), adjclose(im), mean(adjclose),&
+      std(adjclose), maxval((close - open) / open * 100)
 
   end do
 
