@@ -6,7 +6,6 @@ matplotlib.use('Agg')
 from datetime import datetime
 import matplotlib.pyplot as plt
 
-
 class Stock():
     def __init__(self, filename):
         self.time = []
@@ -33,12 +32,11 @@ stocks = ['AAPL', 'AMZN', 'CRAY', 'CSCO', 'HPQ', 'IBM', 'INTC', 'MSFT', 'NVDA', 
 for stock in stocks:
     s = Stock(datapath + '/'+stock+'.csv')
     fig = plt.figure(figsize=(12, 6))
-    ax = fig.add_subplot(111, ylim=(0, max(s.close)))
+    ax = fig.add_subplot(111, ylim=(0, max(s.adjclose)))
     ax.tick_params(axis='both', labelsize=16)
-    plt.plot(s.time, s.close, 'k-', lw=1)
-    plt.plot(s.time, s.adjclose, 'r-', lw=1)
+    plt.plot(s.time, s.adjclose, 'k-', lw=1)
     plt.title(stock, fontsize=16)
-    plt.ylabel('Price', fontsize=16)
+    plt.ylabel('Adj. close [USD]', fontsize=16)
     plt.grid(True)
     plt.savefig(stock + '.png', dpi=100)
     plt.close(fig)
