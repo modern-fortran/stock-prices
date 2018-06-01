@@ -29,15 +29,23 @@ datapath = '../data'
 
 stocks = ['AAPL', 'AMZN', 'CRAY', 'CSCO', 'HPQ', 'IBM', 'INTC', 'MSFT', 'NVDA', 'ORCL']
 
-for stock in stocks:
-    s = Stock(datapath + '/'+stock+'.csv')
-    fig = plt.figure(figsize=(12, 6))
-    ax = fig.add_subplot(111, ylim=(0, max(s.adjclose)))
-    ax.tick_params(axis='both', labelsize=16)
-    plt.plot(s.time, s.adjclose, 'k-', lw=1)
-    plt.title(stock, fontsize=16)
-    plt.ylabel('Adj. close [USD]', fontsize=16)
-    plt.grid(True)
-    plt.savefig(stock + '.png', dpi=100)
-    plt.savefig(stock + '.svg')
-    plt.close(fig)
+fig = plt.figure(figsize=(12, 8))
+ind = 0
+for row in range(5):
+    for col in range(2):
+        ax = plt.subplot2grid((5, 2),(row, col), colspan=1, rowspan=1)
+        stock = stocks[ind]
+        s = Stock(datapath + '/' + stock + '.csv')
+        ax.tick_params(axis='both', labelsize=10)
+        plt.plot(s.time, s.adjclose, 'k-', lw=1)
+        plt.text(0.5, 0.8, stock, ha='center', va='bottom', 
+                 transform=ax.transAxes, fontsize=12)
+        if not row == 4:
+            ax.set_xticklabels([])
+        plt.grid(True)
+        ind += 1
+
+fig.tight_layout()
+plt.savefig('adjclose_multipanel.png', dpi=100)
+plt.savefig('adjclose_multipanel.svg')
+plt.close(fig)
