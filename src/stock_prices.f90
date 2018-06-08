@@ -1,6 +1,6 @@
 program stock_prices
 
-  use mod_arrays, only: mean, reverse, running_mean, std
+  use mod_arrays, only: average, reverse, moving_average, std
   use mod_io, only: read_stock
 
   implicit none
@@ -26,7 +26,7 @@ program stock_prices
 
     im = size(close)
 
-    write(*,*) symbols(n), adjclose(1), adjclose(im), mean(adjclose),&
+    write(*,*) symbols(n), adjclose(1), adjclose(im), average(adjclose),&
       std(adjclose), maxval((close - open) / open * 100)
 
   end do
