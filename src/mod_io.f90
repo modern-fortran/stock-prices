@@ -2,6 +2,8 @@ module mod_io
 
   ! A helper module for parsing buoy data in csv format.
 
+  use mod_alloc, only: alloc
+
   implicit none
 
   private
@@ -31,16 +33,15 @@ contains
                                          close(:), adjclose(:), volume(:)
     integer :: fileunit
     integer :: n, nm
-    if (allocated(time)) deallocate(time)
-    if (allocated(open)) deallocate(open)
-    if (allocated(high)) deallocate(high)
-    if (allocated(low)) deallocate(low)
-    if (allocated(close)) deallocate(close)
-    if (allocated(adjclose)) deallocate(adjclose)
-    if (allocated(volume)) deallocate(volume)
     nm = num_records(filename) - 1
-    allocate(time(nm), open(nm), high(nm), low(nm),&
-             close(nm), adjclose(nm), volume(nm))
+    if (allocated(time)) deallocate(time)
+    allocate(time(nm))
+    call alloc(open, nm)
+    call alloc(high, nm)
+    call alloc(low, nm)
+    call alloc(close, nm)
+    call alloc(adjclose, nm)
+    call alloc(volume, nm)
     open(newunit=fileunit, file=filename)
     read(fileunit, fmt=*, end=1)
     do n = 1, nm
