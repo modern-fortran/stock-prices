@@ -48,8 +48,7 @@ contains
       read(fileunit, fmt=*, end=1) time(n), open(n),&
         high(n), low(n), close(n), adjclose(n), volume(n)
     end do
-    1 continue
-    close(fileunit)
+    1 close(fileunit)
   end subroutine read_stock
 
 end module mod_io
