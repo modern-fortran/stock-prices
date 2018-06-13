@@ -3,7 +3,7 @@
 FC = gfortran
 OBJS = mod_alloc.o mod_arrays.o mod_io.o
 
-all: stock_prices
+all: stock_gain
 
 .SUFFIXES: .f90 .o
 
@@ -12,7 +12,7 @@ all: stock_prices
 	$(FC) -c $<
 
 # programs
-stock_prices: stock_prices.f90 $(OBJS)
+stock_gain: stock_gain.f90 $(OBJS)
 	$(FC) $< $(OBJS) -o $@
 
 # modules
@@ -22,4 +22,4 @@ mod_io.o: mod_io.f90 mod_alloc.o
 
 .PHONY:
 clean:
-	rm *.o *.mod stock_prices
+	rm *.o *.mod stock_gain

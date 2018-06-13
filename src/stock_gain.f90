@@ -1,6 +1,6 @@
-program stock_prices
+program stock_gain
 
-  use mod_arrays, only: average, reverse, moving_average, std
+  use mod_arrays, only: reverse
   use mod_io, only: read_stock
 
   implicit none
@@ -9,26 +9,27 @@ program stock_prices
   character(len=10), allocatable :: time(:)
   real, allocatable :: open(:), high(:), low(:), close(:), adjclose(:), volume(:)
   integer :: i, im, n
+  real :: gain
 
   symbols = ['AAPL', 'AMZN', 'CRAY', 'CSCO', 'HPQ ',&
              'IBM ', 'INTC', 'MSFT', 'NVDA', 'ORCL']
-
-  write(*,*) 'Symbol, Adj. close (2000), Adj. close (2018), Average, Standard dev., Max. growth [%]'
 
   do n = 1, size(symbols)
 
     call read_stock('data/' // trim(symbols(n)) //  '.csv', time,&
       open, high, low, close, adjclose, volume)
 
-    open = reverse(open)
-    close = reverse(close)
     adjclose = reverse(adjclose)
+    gain = (adjclose(size(adjclose)) - adjclose(1))
 
-    im = size(close)
+    if (n == 1) then
+      print *, time(size(time)) // ' through ' // time(1)
+      print *, 'Symbol, Gain (USD), Relative gain (%)'
+      print *, '-------------------------------------'
+    end if
 
-    write(*,*) symbols(n), adjclose(1), adjclose(im), average(adjclose),&
-      std(adjclose), maxval((close - open) / open * 100)
+    print *, symbols(n), gain, nint(gain / adjclose(1) * 100)
 
   end do
 
-end program stock_prices
+end program stock_gain

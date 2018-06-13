@@ -2,12 +2,12 @@
 
 .PHONY: all clean
 
-all: stock_prices
+all: stock_gain
 
-stock_prices: src/*.f90
+stock_gain: src/*.f90
 	$(MAKE) --directory=src $@
 	cp src/$@ .
 
 clean:
-	rm stock_prices
+	rm stock_gain
 	$(MAKE) --directory=src $@
