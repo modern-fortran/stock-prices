@@ -24,4 +24,4 @@ install:
     - make
 
 script:
-    - ./stock_prices
+    - ./stock_gain

@@ -5,11 +5,13 @@
 
 Processing stock prices with Fortran arrays.
 
+![](https://github.com/modern-fortran/stock-prices/blob/master/plotting/adjclose_multipanel.svg)
+
 ## Getting started
 
 ```
 git clone https://github.com/modern-fortran/stock-prices
 cd stock-prices
 make
-./stock_prices
+./stock_gain
 ```

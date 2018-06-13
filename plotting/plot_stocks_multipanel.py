@@ -46,6 +46,5 @@ for row in range(5):
         ind += 1
 
 fig.tight_layout()
-plt.savefig('adjclose_multipanel.png', dpi=100)
 plt.savefig('adjclose_multipanel.svg')
 plt.close(fig)
