@@ -5,7 +5,7 @@ module mod_arrays
   implicit none
 
   private
-  public :: average, reverse, moving_average, std
+  public :: average, intdate, moving_average, reverse, std
 
 contains
 
@@ -15,12 +15,13 @@ contains
     average = sum(x) / size(x)
   end function average
 
-  pure function reverse(x)
-    ! Reverses the order of elements of x.
-    real, intent(in) :: x(:)
-    real :: reverse(size(x))
-    reverse = x(size(x):1:-1)
-  end function reverse
+  pure elemental integer function intdate(t)
+    ! Converts a time stamp in format YYYY-mm-dd to integer.
+    character(len=10), intent(in) :: t
+    character(len=8) :: str
+    str = t(1:4) // t(6:7) // t(9:10)
+    read(str, *) intdate
+  end function intdate
 
   pure function moving_average(x, w) result(res)
     ! Returns the moving average of x with window w.
@@ -35,6 +36,13 @@ contains
       res(i) = average(x(i1:i2))
     end do 
   end function moving_average
+
+  pure function reverse(x)
+    ! Reverses the order of elements of x.
+    real, intent(in) :: x(:)
+    real :: reverse(size(x))
+    reverse = x(size(x):1:-1)
+  end function reverse
 
   pure real function std(x)
     ! Returns the standard deviation of x.
