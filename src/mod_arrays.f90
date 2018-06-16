@@ -6,7 +6,7 @@ module mod_arrays
 
   private
   public :: argsort, average, crossneg, crosspos,&
-            intdate, moving_average, reverse, std
+            intdate, moving_average, moving_std, reverse, std
 
 contains
 
@@ -84,13 +84,25 @@ contains
     integer, intent(in) :: w
     real :: res(size(x))
     integer :: i, i1, i2
-    res = 0
     do i = 1, size(x)
       i1 = max(i-w/2, 1)
       i2 = min(i+w/2, size(x))
       res(i) = average(x(i1:i2))
     end do 
   end function moving_average
+
+  pure function moving_std(x, w) result(res)
+    ! Returns the moving standard deviation of x with window w.
+    real, intent(in) :: x(:)
+    integer, intent(in) :: w
+    real :: res(size(x))
+    integer :: i, i1, i2
+    do i = 1, size(x)
+      i1 = max(i-w/2, 1)
+      i2 = min(i+w/2, size(x))
+      res(i) = std(x(i1:i2))
+    end do 
+  end function moving_std
 
   pure function reverse(x)
     ! Reverses the order of elements of x.

@@ -7,7 +7,7 @@ module mod_io
   implicit none
 
   private
-  public :: read_stock
+  public :: read_stock, write_stock
 
 contains
 
@@ -31,8 +31,7 @@ contains
     character(len=10), allocatable, intent(in out) :: time(:)
     real, allocatable, intent(in out) :: open(:), high(:), low(:),&
                                          close(:), adjclose(:), volume(:)
-    integer :: fileunit
-    integer :: n, nm
+    integer :: fileunit, n, nm
     nm = num_records(filename) - 1
     if (allocated(time)) deallocate(time)
     allocate(time(nm))
@@ -50,5 +49,18 @@ contains
     end do
     1 close(fileunit)
   end subroutine read_stock
+
+  subroutine write_stock(filename, time, price, mvavg, mvstd)
+    ! Write derived stock data to file.
+    character(len=*), intent(in) :: filename
+    character(len=10), intent(in) :: time(:)
+    real, intent(in) :: price(:), mvavg(:), mvstd(:)
+    integer :: fileunit, n
+    open(newunit=fileunit, file=filename)
+    do n = 1, size(time)
+      write(fileunit, fmt=*) time(n), price(n), mvavg(n), mvstd(n)
+    end do
+    close(fileunit)
+  end subroutine write_stock 
 
 end module mod_io
