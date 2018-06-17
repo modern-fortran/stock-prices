@@ -27,7 +27,8 @@ class Stock():
 
 datapath = '../data'
 
-stocks = ['AAPL', 'AMZN', 'CRAY', 'CSCO', 'HPQ', 'IBM', 'INTC', 'MSFT', 'NVDA', 'ORCL']
+stocks = ['AAPL', 'AMZN', 'CRAY', 'CSCO', 'HPQ',
+          'IBM', 'INTC', 'MSFT', 'NVDA', 'ORCL']
 
 for stock in stocks:
     s = Stock(datapath + '/'+stock+'.csv')
