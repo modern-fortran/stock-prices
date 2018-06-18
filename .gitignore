@@ -1,3 +1,6 @@
 *.o
 *.mod
-stock_prices
+*.txt
+stock_gain
+stock_volatility
+stock_crossover

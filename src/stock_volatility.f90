@@ -30,7 +30,7 @@ program stock_volatility
     print *, symbols(n), average(adjclose), std(adjclose),&
       nint(std(adjclose) / average(adjclose) * 100)
 
-    call write_stock(trim(symbols(n)) // '.csv', time(im:1:-1), adjclose,&
+    call write_stock(trim(symbols(n)) // '_volatility.txt', time(im:1:-1), adjclose,&
       moving_average(adjclose, 30), moving_std(adjclose, 30))
 
   end do

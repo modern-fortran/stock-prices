@@ -18,4 +18,4 @@ stock_crossover: src/*.f90
 
 clean:
 	$(MAKE) --directory=src $@
-	rm stock_gain stock_volatility stock_crossover
+	rm *.txt stock_gain stock_volatility stock_crossover
