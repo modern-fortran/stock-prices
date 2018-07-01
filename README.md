@@ -27,12 +27,12 @@ This will build three small apps: `stock_gain`, `stock_volatility`, and `stock_c
 ./stock_crossover
 ```
 
-### Making figures
+### Plotting the results
 
-Python plotting scripts are provided to read and plot the data
+You can use the included Python scripts to read and plot the data
 produced by the Fortran apps.
 
-Make sure to first set up a fresh Python virtual environment:
+First, set up a fresh Python virtual environment:
 
 ```
 python -m venv venv
