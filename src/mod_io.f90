@@ -1,6 +1,6 @@
 module mod_io
 
-  ! A helper module for parsing buoy data in csv format.
+  ! A helper module for parsing stock price data in csv format.
 
   use mod_alloc, only: alloc
 

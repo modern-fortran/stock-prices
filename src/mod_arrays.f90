@@ -11,7 +11,7 @@ module mod_arrays
 contains
 
   pure function argsort(x) result(a)
-    ! Returns indices that would sort x from low to high.
+    ! Returns indices that sort x from low to high.
     real, intent(in):: x(:)
     integer :: a(size(x))
     integer :: i, i0, tmp1
