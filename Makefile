@@ -16,6 +16,11 @@ stock_crossover: src/*.f90
 	$(MAKE) --directory=src $@
 	cp src/$@ .
 
+figures: stock_volatility stock_crossover
+	./stock_volatility
+	./stock_crossover
+	$(MAKE) --directory=plotting
+
 clean:
 	$(MAKE) --directory=src $@
-	rm *.txt stock_gain stock_volatility stock_crossover
+	$(RM) *.txt stock_gain stock_volatility stock_crossover

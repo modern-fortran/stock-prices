@@ -43,6 +43,8 @@ stocks = ['AAPL', 'AMZN', 'CRAY', 'CSCO', 'HPQ',
 startdate = datetime(2017, 1, 1)
 enddate = datetime(2018, 1, 1)
 
+up_arrow, down_arrow = u'$\u2191$', u'$\u2193$'
+
 for stock in stocks:
 
     print(stock)
@@ -56,18 +58,21 @@ for stock in stocks:
     ax.tick_params(axis='both', labelsize=16)
     plt.ylim(min(np.array(s.adjclose)[mask]), max(np.array(s.adjclose)[mask]))
     plt.plot(s.time, s.adjclose, 'k-', lw=2)
-    plt.plot(s.time, s.mvavg, 'b-', lw=2)
+    plt.plot(s.time, s.mvavg, 'k-', lw=4, alpha=0.4)
     datenum = date2num(s.time)
     for t in sell:
         n = np.argmin((datenum - date2num(t))**2)
-        plt.plot(s.time[n], s.adjclose[n], 'rv', ms=12)
+        plt.plot(s.time[n], s.adjclose[n], linestyle=None,
+                 marker=down_arrow, color='r', ms=18)
     for t in buy:
         n = np.argmin((datenum - date2num(t))**2)
-        plt.plot(s.time[n], s.adjclose[n], 'g^', ms=12)
+        plt.plot(s.time[n], s.adjclose[n], linestyle=None,
+                 marker=up_arrow, color='g', ms=18)
     plt.title(stock, fontsize=16)
     plt.ylabel('Adj. close [USD]', fontsize=16)
     plt.title(stock, fontsize=16)
     plt.grid(True)
     plt.savefig(stock + '_crossover.svg')
+    plt.savefig(stock + '_crossover.png')
     plt.close(fig)
 

@@ -28,4 +28,4 @@ mod_io.o: mod_io.f90 mod_alloc.o
 
 .PHONY:
 clean:
-	rm *.o *.mod stock_gain stock_volatility stock_crossover
+	$(RM) *.o *.mod stock_gain stock_volatility stock_crossover
