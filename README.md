@@ -3,7 +3,8 @@
 [![Build Status](https://travis-ci.org/modern-fortran/listings.svg?branch=master)](https://travis-ci.org/modern-fortran/stock-prices)
 [![GitHub issues](https://img.shields.io/github/issues/modern-fortran/stock-prices.svg)](https://github.com/modern-fortran/stock-prices/issues)
 
-Processing stock prices with Fortran arrays.
+Analyzing stock prices with Fortran arrays.
+Companion code for Chapter 4 of [Modern Fortran: Building Efficient Parallel Applications](https://www.manning.com/books/modern-fortran?a_aid=modernfortran&a_bid=2dc4d442)
 
 ![](https://github.com/modern-fortran/stock-prices/blob/master/plotting/adjclose_multipanel.svg)
 
