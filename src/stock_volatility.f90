@@ -6,7 +6,7 @@ program stock_volatility
   implicit none
 
   character(len=4), allocatable :: symbols(:)
-  character(len=10), allocatable :: time(:)
+  character(len=:), allocatable :: time(:)
   real, allocatable :: open(:), high(:), low(:), close(:), adjclose(:), volume(:)
   integer :: i, im, n
 
@@ -30,7 +30,9 @@ program stock_volatility
     print *, symbols(n), average(adjclose), std(adjclose),&
       nint(std(adjclose) / average(adjclose) * 100)
 
-    call write_stock(trim(symbols(n)) // '_volatility.txt', time(im:1:-1), adjclose,&
+    time = time(im:1:-1)
+
+    call write_stock(trim(symbols(n)) // '_volatility.txt', time, adjclose,&
       moving_average(adjclose, 30), moving_std(adjclose, 30))
 
   end do

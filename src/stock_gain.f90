@@ -6,7 +6,7 @@ program stock_gain
   implicit none
 
   character(len=4), allocatable :: symbols(:)
-  character(len=10), allocatable :: time(:)
+  character(len=:), allocatable :: time(:)
   real, allocatable :: open(:), high(:), low(:), close(:), adjclose(:), volume(:)
   integer :: i, im, n
   real :: gain

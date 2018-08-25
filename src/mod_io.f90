@@ -28,13 +28,13 @@ contains
   subroutine read_stock(filename, time, open, high, low, close, adjclose, volume)
     ! Read daily stock prices from a csv file.
     character(len=*), intent(in) :: filename
-    character(len=10), allocatable, intent(in out) :: time(:)
+    character(len=:), allocatable, intent(in out) :: time(:)
     real, allocatable, intent(in out) :: open(:), high(:), low(:),&
                                          close(:), adjclose(:), volume(:)
     integer :: fileunit, n, nm
     nm = num_records(filename) - 1
     if (allocated(time)) deallocate(time)
-    allocate(time(nm))
+    allocate(character(len=10) :: time(nm))
     call alloc(open, nm)
     call alloc(high, nm)
     call alloc(low, nm)
@@ -53,7 +53,7 @@ contains
   subroutine write_stock(filename, time, price, mvavg, mvstd)
     ! Write derived stock data to file.
     character(len=*), intent(in) :: filename
-    character(len=10), intent(in) :: time(:)
+    character(len=:), allocatable, intent(in) :: time(:)
     real, intent(in) :: price(:), mvavg(:), mvstd(:)
     integer :: fileunit, n
     open(newunit=fileunit, file=filename)
