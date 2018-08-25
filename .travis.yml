@@ -17,11 +17,16 @@ git:
 
 addons:
   apt:
-    sources: ['ubuntu-toolchain-r-test']
-    packages: ['gfortran']
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gfortran-7
 
 install:
+    - gfortran -v
     - make
 
 script:
     - ./stock_gain
+    - ./stock_volatility
+    - ./stock_crossover
