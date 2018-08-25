@@ -23,7 +23,6 @@ addons:
       - gfortran-7
 
 install:
-    - gfortran-7 -v
     - make
 
 script:

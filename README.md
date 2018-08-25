@@ -15,7 +15,7 @@ Companion code for Chapter 4 of [Modern Fortran: Building Efficient Parallel App
 ```
 git clone https://github.com/modern-fortran/stock-prices
 cd stock-prices
-make
+FC=gfortran make
 ```
 
 This will build three small apps: `stock_gain`, `stock_volatility`, and `stock_crossover`.
