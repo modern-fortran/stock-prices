@@ -4,7 +4,7 @@ fast_finish: true
 os:
   - linux
 
-env: FC=gfortran
+env: FC=gfortran-7
 
 dist: trusty
 group: edge
@@ -23,7 +23,7 @@ addons:
       - gfortran-7
 
 install:
-    - gfortran -v
+    - gfortran-7 -v
     - make
 
 script:
