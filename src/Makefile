@@ -1,6 +1,6 @@
 # stock-prices Makefile
 
-FC = gfortran
+FC ?= gfortran
 OBJS = mod_alloc.o mod_arrays.o mod_io.o
 
 all: stock_gain
