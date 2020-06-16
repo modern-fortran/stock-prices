@@ -51,7 +51,7 @@ contains
     xavg = moving_average(x, w)
     greater = x > xavg
     smaller = x < xavg
-    res = pack(res, smaller(2:) .and. greater(:size(x-1)))
+    res = pack(res, smaller(2:) .and. greater(:size(x)-1))
   end function crossneg
 
   pure function crosspos(x, w) result(res)
@@ -67,7 +67,7 @@ contains
     xavg = moving_average(x, w)
     greater = x > xavg
     smaller = x < xavg
-    res = pack(res, greater(2:) .and. smaller(:size(x-1)))
+    res = pack(res, greater(2:) .and. smaller(:size(x)-1))
   end function crosspos
 
   pure elemental integer function intdate(t)
