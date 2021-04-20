@@ -36,7 +36,7 @@ produced by the Fortran apps.
 First, set up a fresh Python virtual environment:
 
 ```
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 pip install -U pip
 pip install -r plotting/requirements.txt
