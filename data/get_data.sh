@@ -1,5 +1,9 @@
 #!/bin/bash
 #
+# This is a bash script that can be run on an operating system that
+# supports it, e.g. Linux, macOS, or Windows Subsystem for Linux on
+# Windows.
+#
 # Downloads the end of day stock data from the alphavantage.co API.
 # The ALPHAVANTAGE_KEY environment variable must be set.
 
